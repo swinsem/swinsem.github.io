@@ -5,7 +5,7 @@ output:
 ---
 <br>
 
-<center> # **Landscape ecology of high elevation forests**
+<center> # **Remote sensing applications for forest and fire ecology**
 
 <br>
 

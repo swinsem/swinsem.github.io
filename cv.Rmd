@@ -8,11 +8,11 @@ output:
 ## Curriculum Vitae
 
 <br>
-Last updated May 7, 2021.
+Last updated April 30, 2025.
 <br>
 
-<object data="pdf/WinsemiusSara_cv.pdf" type = "application/pdf" width = "800px" height = "800px">
-    <embed src = "pdf/WinsemiusSara_cv.pdf">
+<object data="pdf/SaraWinsemiusCV.pdf" type = "application/pdf" width = "800px" height = "800px">
+    <embed src = "pdf/SaraWinsemiusCV">
     </embed>
 </object>
 

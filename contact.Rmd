@@ -4,16 +4,12 @@ output:
     theme: yeti
 ---
 <br>
-Send me an email, swinsemius at ucdavis edu
+Send me an email, sdwinsemius at gmail com
 
-Connect with me on Twitter @[SWinsemius](https://twitter.com/SWinsemius)
-
-<br> 
-When we're back to life in person, maybe you'll find me at the Jin Lab in 136 Veihmeyer Hall
 
 <br>
 
-But until then, I'll be hanging out at home with Flower and Phoebe, and will be reachable over the interwebs
+Since 2020 I've been working from home in Davis with Flower and Phoebe, and am reachable over the interwebs
 
 <br>
 

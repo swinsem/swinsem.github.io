@@ -8,10 +8,23 @@ output:
 ## Research
 
 <br>
-I am building a model to measure aboveground biomass of high elevation forests based on LiDAR and plot measurements, including plots from the Forest Inventory and Analysis (FIA) program, National Park Service Inventory and Monitoring, the US Forest Service Region 5 Remote Sensing Lab, and my own field work. My 2018 and 2019 data collection is in areas of different severity fires across subalpine forests. Tree height and diameter data is converted to biomass through allometric equations, and then related to reflectance data from Landsat satellites in order to map carbon across the whole region.
+
+### Fire severity mapping as basal area loss
+
+I am currently working on a project mapping fire severity as percent basal area loss in the western US. I am excited for the Google Earth Engine severity mapping tool to be available once the paper is out - the link will be posted here as well as to my <a href="https://github.com/swinsem/severity"> github repo</a>. The tool will allow anyone to map fire severity for any fire since 1985 in the western US, and to output % basal area loss as well as any of the calculated variables (eg. RdNBR, post-fire NBR, elevation, mean precipitation, etc). 
+
+The analysis uses field data and a suite of spectral, climatic, and topographic variables extracted from Earth Engine and uses a conditional predictive impact (CPI) analysis for data reduction and hyperparameter tuning using random forest analysis in R. The resulting model is then put back into Earth Engine for the prediction script which is easily modifiable for users. Many thanks to all of the data contributors who shared their plot data with me.
+
+Stay tuned!
+
+<br>
+
+### Subalpine forest biomass
+
+I developed the highest accuracty aboveground biomass map for subalpine forests in the Sierra Nevada using lidar and field measurements. I gathered plot data from Forest Inventory and Analysis (FIA), National Park Service Inventory and Monitoring foxtail and whitebark pine program, the US Forest Service Region 5 whitebark pine monitoring, and my own field work in post-fire subalpine forests, which spanned fire severities in the south and central Sierra Nevada. Tree height and diameter data is converted to biomass through allometric equations, and then related to lidar metrics (canopy cover, canopy rumple, and mean height) to map biomass.
 <br>
 <br>
-My research is funded by a CAL FIRE Forest Health Research Grant (beginning June 2019) and minigrants from the Sequoia Parks Conservancy's Sequoia Science and Learning Center (funded in 2018 and 2019). 
+This research was funded by a CAL FIRE Forest Health Research Grant (beginning June 2019) and minigrants from the Sequoia Parks Conservancy's Sequoia Science and Learning Center (funded in 2018 and 2019). 
 <br>
 <br>
 ![](pics/Research_treeheights.JPG){width=700px}
@@ -19,9 +32,8 @@ My research is funded by a CAL FIRE Forest Health Research Grant (beginning June
 Measuring tree heights in Kings Canyon National Park during summer 2018 field work. 
 
 <br>
-Below is a map of fire extent in the southern Sierra Nevada that has been clipped to the boundary of high elevation forests (categorized as red fir, lodgepole pine, or a mix of subalpine species). There is a clear increase in the extent of fire in high elevation forests over the last many decades. Subalpine forests have seen a range of changes in climate and forest structure, and I am interested in the drivers of changes in forest structure and biomass.
-<br>
-![](pics/highelevationFires_decade_low.JPG){width=700px}
 
-<br>
+From this research I am also assessing the drivers of biomass. Preliminary analysis shows that, as expected, energy-related drivers are the most important, including elevation and mean temperature. We also see local importance of water-related drivers, particularly on the drier east side of the Sierra Nevada, and soil characteristics such as soil depth and water holding capacity. 
 
+Again, stay tuned for more!
+<br>

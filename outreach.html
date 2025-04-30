@@ -11,19 +11,27 @@
 
 
 
-<title>outreach.utf8</title>
+<title>outreach.knit</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.28/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -35,11 +43,6 @@
     </style>
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -52,32 +55,8 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
+
 
 
 
@@ -87,10 +66,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -107,40 +82,16 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 45px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 50px;
-  margin-top: -50px;
-}
-.section h2 {
-  padding-top: 50px;
-  margin-top: -50px;
-}
-.section h3 {
-  padding-top: 50px;
-  margin-top: -50px;
-}
-.section h4 {
-  padding-top: 50px;
-  margin-top: -50px;
-}
-.section h5 {
-  padding-top: 50px;
-  margin-top: -50px;
-}
-.section h6 {
-  padding-top: 50px;
-  margin-top: -50px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -168,7 +119,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -180,7 +131,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -190,11 +141,28 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.parent().addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -206,13 +174,12 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -220,16 +187,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -273,7 +233,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -307,7 +267,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -319,49 +279,111 @@ $(document).ready(function () {
 <div id="outreach" class="section level2">
 <h2>Outreach</h2>
 <p><br></p>
-<div id="california-fire-science-consortium-research-brief" class="section level3">
-<h3>California Fire Science Consortium research brief</h3>
-<p>Released May 2021</p>
-<p><a href="https://www.cafiresci.org/research-publications-source/category/whitepinemortality" class="uri">https://www.cafiresci.org/research-publications-source/category/whitepinemortality</a></p>
-<p>Disturbance interactions are a fascinating topic, so I was very excited to read the paper that Joan Dudney and others wrote about the multiple disturbances that white pines face in the southern Sierra Nevada. I wrote a research brief for the California Fire Science Consortium (which has lots of other great briefs too!) so there would be an easy-to-read summary of their study, the findings, and the importance for management.</p>
-<p>Key findings relevant for management:</p>
-<ul>
-<li>The extent of white pine blister rust increased from 20% of plots in the 1990s to 33% of plots when resampled ~20 years later.<br />
-</li>
-<li>The blister rust infection rate declined in sugar pine due to the already very high rate of mortality in sugar pine from earlier infection. Sugar pines also had high amounts of mortality from fire and mountain pine beetle, which all together led to a more rapid decline in sugar pine populations than had previously been documented. Sugar pines may need active restoration in the southern Sierra Nevada to sustain their population.<br />
-</li>
-<li>Infection rate of blister rust increased in western white pine and whitebark pine. While no infections were found in plots with foxtail pine, white pine blister rust was observed in foxtail pines outside of the plots for the first time.</li>
-<li>Within each species, lower elevations were associated with increased mortality; these are also the areas most at risk from climate warming impacts.<br />
-</li>
-<li>More frequent sampling of long-term monitoring plots is needed to track mortality, especially in the subalpine white pines in the southern Sierra Nevada.</li>
-</ul>
-<p>Figure shows the annual mortality (grey bars) and recruitment rates (green bars) by white pine species. Error bars represent 95% confidence intervals.</p>
-<p><img src="pics/Dudney_fig2.png" width="500" /></p>
-<p><br></p>
-</div>
 <div id="google-earth-engine-community-tutorial" class="section level3">
 <h3>Google Earth Engine Community Tutorial</h3>
-<p>Released February 23, 2021</p>
-<p><a href="https://developers.google.com/earth-engine/tutorials/community/extract-raster-values-for-points" class="uri">https://developers.google.com/earth-engine/tutorials/community/extract-raster-values-for-points</a></p>
-<p>Almost every ecologist I know has at some point wanted or needed data from a raster file such as elevation, slope, or NDVI, and many people I know work with plot data as well. Extracting those raster values for plots is therefore a pretty essential research task. I knew how to do this in a variety of ways (R, ArcMap, ENVI), but when I realized I needed a time series of reflectance data for my plots across many years, I decided to use Google Earth Engine - it would have been incredibly cumbersome to download all the imagery locally.</p>
-<p>After a bit of time puzzling over it on my own and with the help of a friend, I met the Google engineer <a href="https://jdbcode.github.io/">Justin Braaten</a> at a workshop during the AGU conference. Over the next year (with some starts and stops…) we figured out the best way to get the code working and ways to apply it to a variety of purposes and datasets. I wrote a community tutorial for the code because this is a crucial task, Earth Engine is the perfect platform for it, and there wasn’t good documentation about it. If it took a Google engineer a lot of thought and time to figure it out, I wouldn’t expect my peers to be able to figure it out quickly. And as a bonus, I learned a lot about Earth Engine as I figured out explanations!</p>
-<p>The tutorial goes through the ideas and code for the basics of extracting raster data for points or polygons, and then three examples. If this is relevant to your work, I encourage you to take a look, try it out, and let me know how it goes! It’s all on github, so I am happy to take suggestions for improvement and clarity.</p>
+<p>UPDATE!</p>
+<p>I turned the tutorial below into the Zonal Statistics book chapter in
+the open source book, <a href="https://www.eefabook.org/"> Cloud-Based
+Remote Sensing with Google Earth Engine</a>, published October 2023. You
+can find it at that link if you go to the book, Section F5, as chapter
+F5.2. Huge thanks to my coauthor Justin Braaten!</p>
+<p><br></p>
+<p>Original tutorial released February 23, 2021</p>
+<p><a
+href="https://developers.google.com/earth-engine/tutorials/community/extract-raster-values-for-points"
+class="uri">https://developers.google.com/earth-engine/tutorials/community/extract-raster-values-for-points</a></p>
+<p>Almost every ecologist I know has at some point wanted or needed data
+from a raster file such as elevation, slope, or NDVI, and many people I
+know work with plot data as well. Extracting those raster values for
+plots is therefore a pretty essential research task. I knew how to do
+this in a variety of ways (R, ArcMap, ENVI), but when I realized I
+needed a time series of reflectance data for my plots across many years,
+I decided to use Google Earth Engine - it would have been incredibly
+cumbersome to download all the imagery locally.</p>
+<p>After a bit of time puzzling over it on my own and with the help of a
+friend, I met the Google engineer <a
+href="https://jdbcode.github.io/">Justin Braaten</a> at a workshop
+during the AGU conference. Over the next year (with some starts and
+stops…) we figured out the best way to get the code working and ways to
+apply it to a variety of purposes and datasets. I wrote a community
+tutorial for the code because this is a crucial task, Earth Engine is
+the perfect platform for it, and there wasn’t good documentation about
+it. If it took a Google engineer a lot of thought and time to figure it
+out, I wouldn’t expect my peers to be able to figure it out quickly. And
+as a bonus, I learned a lot about Earth Engine as I figured out
+explanations!</p>
+<p>The tutorial goes through the ideas and code for the basics of
+extracting raster data for points or polygons, and then three examples.
+If this is relevant to your work, I encourage you to take a look, try it
+out, and let me know how it goes! It’s all on github, so I am happy to
+take suggestions for improvement and clarity.</p>
 <p><br></p>
 </div>
-<div id="coursera-class-on-climate-change-solutions" class="section level3">
-<h3>Coursera class on climate change solutions</h3>
-<p>Coming Soon!</p>
-<p>After a couple of guest lectures I gave to Dr. Marina Oster’s Stanford continuing education classes on climate change solutions and developing climate change action plans, she invited me to contribute to the development of the class for a Coursera format. I have two segments: An intro to fire ecology, including a case study of fire in California, and being zero waste (a practice I’ve had for a few years).</p>
+<div id="california-fire-science-consortium-research-brief"
+class="section level3">
+<h3>California Fire Science Consortium research brief</h3>
+<p>Released May 2021</p>
+<p><a
+href="https://www.cafirescience.org/research-publications-source/category/whitepinemortality"
+class="uri">https://www.cafirescience.org/research-publications-source/category/whitepinemortality</a></p>
+<p>Disturbance interactions are a fascinating topic, so I was very
+excited to read the <a href="https://doi.org/10.1002/ecs2.3263">
+paper</a> that Joan Dudney and others wrote about the multiple
+disturbances that white pines face in the southern Sierra Nevada. I
+wrote a research brief for the California Fire Science Consortium (which
+has lots of other great briefs too!) so there would be an easy-to-read
+summary of their study, the findings, and the importance for
+management.</p>
+<p>Key findings relevant for management:</p>
+<ul>
+<li>The extent of white pine blister rust increased from 20% of plots in
+the 1990s to 33% of plots when resampled ~20 years later.<br />
+</li>
+<li>The blister rust infection rate declined in sugar pine due to the
+already very high rate of mortality in sugar pine from earlier
+infection. Sugar pines also had high amounts of mortality from fire and
+mountain pine beetle, which all together led to a more rapid decline in
+sugar pine populations than had previously been documented. Sugar pines
+may need active restoration in the southern Sierra Nevada to sustain
+their population.<br />
+</li>
+<li>Infection rate of blister rust increased in western white pine and
+whitebark pine. While no infections were found in plots with foxtail
+pine, white pine blister rust was observed in foxtail pines outside of
+the plots for the first time.</li>
+<li>Within each species, lower elevations were associated with increased
+mortality; these are also the areas most at risk from climate warming
+impacts.<br />
+</li>
+<li>More frequent sampling of long-term monitoring plots is needed to
+track mortality, especially in the subalpine white pines in the southern
+Sierra Nevada.</li>
+</ul>
+<p>Figure shows the annual mortality (grey bars) and recruitment rates
+(green bars) by white pine species. Error bars represent 95% confidence
+intervals.</p>
+<p><img src="pics/Dudney_fig2.png" width="500" /> Source: Dudney et
+al. 2020, Ecosphere</p>
+<p><br></p>
+</div>
+<div id="climate-change-solutions" class="section level3">
+<h3>Climate change solutions</h3>
+<p>I gave a few guest lectures Dr. Marina Oster’s Stanford continuing
+education classes on climate change solutions and developing climate
+change action plans. I gave lectures on fire ecology and being zero
+waste (a practice I followed for a few years).</p>
 <p>The section on fire includes the following topics:</p>
 <ul>
 <li><p>Fire ecology basics</p></li>
 <li><p>Fire regimes</p></li>
 <li><p>California fire</p>
 <ul>
-<li><p>Fire-adapted ecosystems and the history of cultural fire by Indigenous people</p></li>
+<li><p>Fire-adapted ecosystems and the history of cultural fire by
+Indigenous people</p></li>
 <li><p>Fire suppression</p></li>
 <li><p>The current issues</p></li>
-<li><p>Moving forward: prescribed fire, home-hardening, and climate change</p></li>
+<li><p>Moving forward: prescribed fire, home-hardening, and climate
+change</p></li>
 </ul></li>
 </ul>
 </div>
@@ -394,7 +416,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
