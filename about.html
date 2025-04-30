@@ -11,19 +11,27 @@
 
 
 
-<title>about.utf8</title>
+<title>about.knit</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.28/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -35,11 +43,6 @@
     </style>
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -52,32 +55,8 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
+
 
 
 
@@ -87,10 +66,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -107,40 +82,16 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 45px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 50px;
-  margin-top: -50px;
-}
-.section h2 {
-  padding-top: 50px;
-  margin-top: -50px;
-}
-.section h3 {
-  padding-top: 50px;
-  margin-top: -50px;
-}
-.section h4 {
-  padding-top: 50px;
-  margin-top: -50px;
-}
-.section h5 {
-  padding-top: 50px;
-  margin-top: -50px;
-}
-.section h6 {
-  padding-top: 50px;
-  margin-top: -50px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -168,7 +119,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -180,7 +131,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -190,11 +141,28 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.parent().addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -206,13 +174,12 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -220,16 +187,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -273,7 +233,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -307,7 +267,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -319,16 +279,55 @@ $(document).ready(function () {
 <div id="hello" class="section level3">
 <h3><em>Hello!</em></h3>
 <p><br></p>
-<p><img src="pics/SW_about.jpg" width="500" /></p>
+<p><img src="pics/SW_about1.JPG" width="500" /></p>
+<p><br> I am an ORISE Postdoctoral Fellow with the US Forest Service
+Rocky Mountain Research Station, working with the Biodiversity Research
+and Policy Center. I am a member of the working group “Beyond the
+historical baseline: Management for biodiversity conservation in changed
+ecosystems.”</p>
+<p>I completed my PhD in Ecology at UC Davis, where I worked with
+<a href="http://jin.ucdavis.edu"> Dr. Yufang Jin </a> and
+<a href="https://safford.ucdavis.edu/"> Dr. Hugh Safford </a>. My
+dissertation focused on remote sensing applications for forest and fire
+ecology, including biomass mapping in subalpine forests of the Sierra
+Nevada and producing an open-source fire severity mapping tool in Google
+Earth Engine.</p>
+<p>Although much of my graduate work focused on forest structure and
+composition, my initial experiences in ecology centered on restoration
+and endangered species. In multiple positions with the National Park
+Service, I investigated how restoration practices influence plant
+communities. These projects highlighted the complex interplay of
+grazing, climate shifts, Indigenous management practices, and invasive
+species—ultimately motivating me to pursue ecology with a focus on
+improving public land management under climate change. Following my time
+with the NPS, I worked as a lab manager for Claire Kremen at UC
+Berkeley, where I studied native bee community assembly and conservation
+within agroecosystems.</p>
 <p><br></p>
-<p>I’m a PhD student at UC Davis in the Graduate Group in Ecology, working with <a href="http://jin.ucdavis.edu"> Dr. Yufang Jin </a> and <a href="https://safford.faculty.ucdavis.edu/"> Dr. Hugh Safford </a>. I study forest and fire ecology across landscapes, and am interested in working with people to move forward into a healthier relationship with fire. My background is in field ecology with a focus on restoration and land management strategies across many contexts: the National Park Service at Point Reyes National Seashore and Lava Beds National Monument, diversified farming systems and pollinator restoration, high elevation forest fire across the National Parks and National Forest System in the Sierra Nevada, and community-led prescribed fire training in Sonoma County.</p>
-<p>I believe it is important to expand outreach and communication to the public about fire and forest systems in California. Beyond that, I believe for our collective societal relationship with fire to improve, we must focus on empowering communities and developing programs that meet their needs where they are. An essential part of this is facilitating cultural burning led by Indigenous fire practitioners. I have been fortunate to attend cultural burns led by Honorable Chairman Ron Goode and am committed to improving conditions for Indigenous fire practitioners in my work after graduate school. I also am fireline trained as an FFT2 and attended a TREX program in 2020 led by Fire Forward in Sonoma County. Community-led and participatory programs like that are an amazing way to spread the word - when a friend, neighbor, or family member participates in a burn, that spreads the news about good fire.</p>
+<p><img src="pics/fire_bananaslug.jpeg" width="500" /></p>
 <p><br></p>
-<p><img src="pics/fire_bananaslug.jpeg" width="500" /> <br></p>
-<p>My research is in high elevation forests of the Sierra Nevada, which capture and protect the majority of California’s water and contain a third of the state’s forest carbon. They face threats from increasing temperatures, changes in snowpack, and increasing fire and insect mortality. My goals are to develop better carbon mapping of high elevation forests and to study changes in forest structure and delayed mortality post fire. I want my science to be useful and relevant, so I believe it’s important to translate all my findings into research briefs or tools for easy access by land managers and policy makers.</p>
-<p><br></p>
+<p>I am also interested in working with people to move forward into a
+healthier relationship with fire. I believe it is important to expand
+outreach and communication to the public about fire and forest systems
+in California. Beyond that, I believe for our collective societal
+relationship with fire to improve, we must focus on empowering
+communities and developing programs that meet their needs where they
+are. An essential part of this is facilitating cultural burning led by
+Indigenous fire practitioners. I have been fortunate to attend cultural
+burns led by Honorable Chairman Ron Goode and am committed to improving
+conditions for Indigenous fire practitioners in my work after graduate
+school. I also am fireline trained as an FFT2 and attended a TREX
+program in 2020 led by Fire Forward in Sonoma County. Community-led and
+participatory programs like that are an amazing way to spread the word
+about good fire.</p>
 <p><img src="pics/SW_redfir.jpg" width="300" /> <br></p>
-<p>Here I am looking stoked with a beautiful red fir cone in one of our plots. They’re hard to find because they’re delicious to animals and are usually eaten pretty quickly! Along with being a teaching assistant for geospatial classes (Intro to GIS and Environmental Remote Sensing), I have also been a TA for plant identification classes where I lead students around campus looking at trees and plants of the urban forest and arboretum. I particularly love leading outdoor labs and sharing my love for plants with students.</p>
+<p>Here I am looking stoked with a beautiful red fir cone in one of our
+plots. They’re hard to find because they’re delicious to animals and are
+usually eaten pretty quickly! Along with teaching geospatial class labs,
+I was a TA for 9 quarters of plant identification classes, where I led
+students around campus looking at trees and plants of the urban forest
+and arboretum. I love leading outdoor labs and sharing my love for
+plants with students.</p>
 <p><br></p>
 </div>
 
@@ -359,7 +358,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
