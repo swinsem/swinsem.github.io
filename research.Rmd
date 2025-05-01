@@ -1,7 +1,10 @@
 ---
+pagetitle: "Sara Winsemius – Research"
 output: 
   html_document:
     theme: yeti
+    includes:
+      in_header: includes/icon.html
 ---
 <br>
 
@@ -21,17 +24,31 @@ Stay tuned!
 
 ### Subalpine forest biomass
 
-I developed the highest accuracty aboveground biomass map for subalpine forests in the Sierra Nevada using lidar and field measurements. I gathered plot data from Forest Inventory and Analysis (FIA), National Park Service Inventory and Monitoring foxtail and whitebark pine program, the US Forest Service Region 5 whitebark pine monitoring, and my own field work in post-fire subalpine forests, which spanned fire severities in the south and central Sierra Nevada. Tree height and diameter data is converted to biomass through allometric equations, and then related to lidar metrics (canopy cover, canopy rumple, and mean height) to map biomass.
+I developed the highest accuracty aboveground biomass map for subalpine forests in the Sierra Nevada using lidar and field measurements. I gathered plot data from Forest Inventory and Analysis (FIA), National Park Service Inventory and Monitoring foxtail and whitebark pine program, the US Forest Service Region 5 whitebark pine monitoring, and my own field work in post-fire subalpine forests, which spanned fire severities in the south and central Sierra Nevada. Tree height and diameter data is converted to biomass through allometric equations, and then related to lidar metrics (canopy cover, canopy rumple, and mean height). 
+
+We estimated biomass using a Bayesian geostatistical model, which incorporates spatial autocorrelation (similar to Kriging) and gives robust measurements for estimates and error at both pixel level and for four management units. We used a 5-fold cross-validation, which allowed us to compare our results with those of two other biomass maps, LEMMA and eMapR, both from Oregon State researchers. Our model had much higher accuracy and precision, and lower bias. An interactive map of biomass is available at this <a href="https://swinsem.users.earthengine.app/view/subalpine-forest-biomass"> Earth Engine app</a>!
 <br>
 <br>
 This research was funded by a CAL FIRE Forest Health Research Grant (beginning June 2019) and minigrants from the Sequoia Parks Conservancy's Sequoia Science and Learning Center (funded in 2018 and 2019). 
 <br>
+
+![](pics/cv_results_geo_single.png){width=500px}
 <br>
-![](pics/Research_treeheights.JPG){width=700px}
+Observed vs predicted aboveground biomass.
+
+<br>
+![](pics/est_yose.jpg){width=300px}![](pics/sd_yose.jpg){width=300px}
+<br>
+Estimate and standard deviation of aboveground biomass in the Yosemite region.
+<br>
+<br>
+![](pics/Research_treeheights.JPG){width=600px}
 <br>
 Measuring tree heights in Kings Canyon National Park during summer 2018 field work. 
 
 <br>
+
+### Drivers of subalpine forest biomass
 
 From this research I am also assessing the drivers of biomass. Preliminary analysis shows that, as expected, energy-related drivers are the most important, including elevation and mean temperature. We also see local importance of water-related drivers, particularly on the drier east side of the Sierra Nevada, and soil characteristics such as soil depth and water holding capacity. 
 

@@ -1,7 +1,10 @@
 ---
+pagetitle: "Sara Winsemius – Contact"
 output: 
   html_document:
     theme: yeti
+    includes:
+      in_header: includes/icon.html
 ---
 <br>
 Send me an email, sdwinsemius at gmail com

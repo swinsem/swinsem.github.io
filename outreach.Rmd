@@ -1,7 +1,10 @@
 ---
+pagetitle: "Sara Winsemius – Outreach"
 output: 
   html_document:
     theme: yeti
+    includes:
+      in_header: includes/icon.html
 ---
 
 <br>

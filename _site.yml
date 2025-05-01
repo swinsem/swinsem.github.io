@@ -1,5 +1,6 @@
 output_dir: "."
 navbar:
+    name: SaraWinsemius
     title: "Sara Winsemius"
     
     left: 

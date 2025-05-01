@@ -1,11 +1,15 @@
 ---
+pagetitle: "Sara Winsemius – Home"
 output: 
   html_document:
     theme: yeti
+    includes:
+      in_header: includes/icon.html
 ---
 <br>
 
-<center> # **Remote sensing applications for forest and fire ecology**
+<center> # **Forest and fire ecology**
+<center> # **applications of remote sensing**
 
 <br>
 

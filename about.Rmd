@@ -1,7 +1,10 @@
 ---
+pagetitle: "Sara Winsemius – About"
 output: 
   html_document:
     theme: yeti
+    includes:
+      in_header: includes/icon.html
 ---
 <br>
 
@@ -15,7 +18,7 @@ output:
 I am an ORISE Postdoctoral Fellow with the US Forest Service Rocky Mountain Research Station, working with the Biodiversity Research and Policy Center. I am a member of the working group "Beyond the historical baseline: Management for biodiversity conservation in changed ecosystems."
 
 
-I completed my PhD in Ecology at UC Davis, where I worked with <a href="http://jin.ucdavis.edu"> Dr. Yufang Jin </a> and <a href="https://safford.ucdavis.edu/"> Dr. Hugh Safford</a>.  My dissertation focused on remote sensing applications for forest and fire ecology, including biomass mapping in subalpine forests of the Sierra Nevada and producing an open-source fire severity mapping tool in Google Earth Engine. 
+I completed my PhD at the University of California, Davis in the <a href="http://ecology.ucdavis.edu/">Graduate Group in Ecology</a>, where I worked with <a href="http://jin.ucdavis.edu"> Dr. Yufang Jin </a> and <a href="https://safford.ucdavis.edu/"> Dr. Hugh Safford</a>.  My dissertation focused on remote sensing applications for forest and fire ecology, including biomass mapping in subalpine forests of the Sierra Nevada and producing an open-source fire severity mapping tool in Google Earth Engine. 
 
 
 Although much of my graduate work focused on forest structure and composition, my initial experiences in ecology centered on restoration and endangered species. In multiple positions with the National Park Service, I investigated how restoration practices influence plant communities. These projects highlighted the complex interplay of grazing, climate shifts, Indigenous management practices, and invasive species—ultimately motivating me to pursue ecology with a focus on improving public land management under climate change. Following my time with the NPS, I worked as a lab manager for Claire Kremen at UC Berkeley, where I studied native bee community assembly and conservation within agroecosystems.
